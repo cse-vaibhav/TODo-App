@@ -22,6 +22,4 @@ A To-Do List Application made with React Native
 
 # Demo Video
 
-<video width="320" height="240" controls>
-  <source src="screenshots/demo.mp4" type="video/mp4">
-</video>
+https://raw.githubusercontent.com/cse-vaibhav/TODo-App/main/screenshots/demo.mp4
