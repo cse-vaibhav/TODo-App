@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     FlatList,
     View,
@@ -7,27 +7,34 @@ import {
 } from 'react-native';
 import CheckBox from 'expo-checkbox';
 
-export function Task({ task, toggled, onChange }) {
+function Task({ text}) {
+
+    const [ isChecked, setChecked ] = useState(false);
+
     return (
         <View style={styles.task}>
-            <CheckBox value={toggled} onChange={onChange}/>
-            <Text style={styles.taskText}>{task}</Text>
+            <CheckBox value={isChecked} onValueChange={setChecked} />
+            <Text style={styles.taskText}>{text}</Text>
         </View>
     );
-}
+};
 
 export function TaskList({ tasks }) {
 
     const taskItems = tasks.map((task, index) => {
         return {
-            task: <Task text={task} key={index} />
+            taskObj: <Task 
+                text={task} 
+                key={index} 
+            />
         }
     })
     
     return (
-        <FlatList style={styles.taskList}
+        <FlatList 
+            style={styles.taskList}
             data={taskItems}
-            renderItem={({ item }) => item}
+            renderItem={({ item }) => item.taskObj}
         />
     );
 }
@@ -37,8 +44,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         color: '#000000',
-        marginVertical: '3%',
+        marginVertical: '2%',
         gap: 8,
+    },
+    taskList: {
+        maxHeight: 100,
+        minHeight: 30
     },
     taskText: {
         color: "#000000"

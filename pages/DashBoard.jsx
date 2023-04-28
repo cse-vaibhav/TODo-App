@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Text,
     View,
@@ -6,25 +6,18 @@ import {
     StyleSheet,
     FlatList,
     TouchableOpacity,
+    Alert,
 } from 'react-native';
-import CheckBox from 'expo-checkbox';
+import { TaskList } from './widgets/Tasks.jsx';
 
 const user_image = require("../resources/Franklin.png")
 const clock_image = require("../resources/clock.png")
 const addBtn_image = require("../resources/addBtn.png")
 
-function Task({ text }) {
-
-    let mark = false;
-    return (
-        <View style={styles.task}>
-            <CheckBox />
-            <Text style={styles.taskText}>{text}</Text>
-        </View>
-    );
-};
-
 export default function DashBoard({ navigation }) {
+
+    const [ tasks, setTasks ] = useState(["task1", "task2", "task3", "task4"]);
+
     return (
         <View style={styles.container}>
             {/* Header */}
@@ -45,20 +38,12 @@ export default function DashBoard({ navigation }) {
                     <View style={styles.taskBox}>
                         <View style={styles.taskHeader}>
                             <Text style={styles.taskHeading}>Daily Tasks</Text>
-                            <TouchableOpacity onPress={() => console.log("Task Added")}>
+                            <TouchableOpacity onPress={() => Alert.prompt("sdf", "sdfdsf", 'text')}>
                                 <Image style={styles.addBtn} source={addBtn_image}></Image>
                             </TouchableOpacity>
                         </View>
                         {/* Tasks */}
-                        <FlatList style={styles.taskList}
-                            data={[
-                                {taskName: "Go to school"},
-                                {taskName: "Go to school"},
-                                {taskName: "Go to school"},
-                                {taskName: "Go to school"},
-                            ]}
-                            renderItem={({item}) => <Task text={item.taskName} />}
-                        />
+                        <TaskList tasks={tasks} />
                     </View>
                 </View>
             </View>
@@ -98,7 +83,8 @@ const styles = StyleSheet.create({
     tasksHeading: {
         color: 'rgba(0, 0, 0, 1)',
         fontWeight: 700,
-        fontSize: 18
+        fontSize: 18,
+        right: '18%'
     },
     taskBox: {
         backgroundColor: '#FFFFFF',
@@ -124,17 +110,4 @@ const styles = StyleSheet.create({
         width: 25,
         resizeMode: 'stretch'
     },
-    taskList: {
-        height: '42%',
-    },
-    task: {
-        display: 'flex',
-        flexDirection: 'row',
-        color: '#000000',
-        marginVertical: '3%',
-        gap: 8,
-    },
-    taskText: {
-        color: "#000000"
-    }
 });
