@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     rowGap: 40,
-    marginTop: 140,
+    marginTop: 30,
   },
   image: {
     left: '3%',
