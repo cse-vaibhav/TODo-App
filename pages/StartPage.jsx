@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,11 +12,11 @@ import Button from './widgets/Buttons.jsx'
 
 const main_image = require('../resources/image-startpage.png')
 
-const StartPage = () => {
+const StartPage = ({ navigation }) => {
 
   // Route it to Registration Page
   // TODO: Change ONCLICK to route to another page
-  const onPress = () => console.log("Pressed");
+  const onPress = () => navigation.navigate('Login');
 
   return (
     <View style={styles.container}>
@@ -28,7 +28,7 @@ const StartPage = () => {
         </View>
 
         <View>
-          <Text style={styles.heading}>Get things dome with TODo</Text>
+          <Text style={styles.heading}>Get things done with TODo</Text>
           <Text style={styles.description}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fames lectus fermentum ultrices ipsum ornare id lorem vestibulum, congue. Quis nulla vel consectetur ultrices. Nulla est faucibus mollis faucibus sed libero amet. Facilisis ut arcu facilisis egestas iaculis nec sit. Donec adipiscing ac massa egestas.
           </Text>

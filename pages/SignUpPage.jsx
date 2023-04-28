@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
+  TouchableOpacity
 } from 'react-native';
 
 import Button from './widgets/Buttons.jsx';
 import TextInputBox from './widgets/TextInputBox.jsx';
 
-const SignUpPage = () => {
+function SignUpPage({ navigation }) {
 
   // Route it to Registration Page
   // TODO: Change ONCLICK to route to another page
-  const onPress = () => console.log("This will go to HomePage");
+  const onPress = () => navigation.navigate("Home");
+  const oldGuyOnPress = () => navigation.navigate("Login");
 
   return (
     <View style={styles.container}>
@@ -33,7 +35,9 @@ const SignUpPage = () => {
           <View style={styles.NewOldGuy}>
             <Text style={styles.black}>Already have an account?</Text>
             {/* TODO: Link to SignIN */}
-            <Text style={styles.green}>Sign In</Text>
+            <TouchableOpacity onPress={oldGuyOnPress}>
+              <Text style={styles.green}>Sign In</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
