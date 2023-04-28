@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomePage from './pages/HomePage.jsx';
+import DashBoard from './pages/DashBoard.jsx';
 import StartPage from './pages/StartPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
@@ -19,7 +19,7 @@ const App = () => {
                 />
                 <Stack.Screen 
                     name="Home"
-                    component={HomePage}
+                    component={DashBoard}
                     options={{title: 'Tasks', headerShown: false}}
                 />
                 <Stack.Screen 
